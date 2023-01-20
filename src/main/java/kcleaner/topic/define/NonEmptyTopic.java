@@ -42,7 +42,7 @@ public class NonEmptyTopic implements ReservedTopic {
             for (Map.Entry<String, DescribeLogDirsResponse.LogDirInfo> node : nodes.getValue().entrySet()) {
                 for (Map.Entry<TopicPartition, DescribeLogDirsResponse.ReplicaInfo> log :
                         node.getValue().replicaInfos.entrySet()) {
-                    System.out.println(log.getKey().topic() + " size is " + log.getValue().size );
+                    System.out.println(log.getKey().topic()+ " partition: " + log.getKey().partition() + " ,size: " + log.getValue().size/(1024*1024) + "Mb" );
                     if (log.getValue().size > 0) {
                         topics.add(log.getKey().topic());
                     }
